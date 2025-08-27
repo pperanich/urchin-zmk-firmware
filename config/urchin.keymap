@@ -1,135 +1,165 @@
 /*
- * 34-Key Split (3x5 + 2 thumbs/side) — ZMK keymap
- * Layers: BASE, EXT (extend/nav/edit), SYM (symbols), NUM (numpad)
+ * Copyright (c) 2020 duckyb
  *
- * Combos (BASE only):
- *   w+e → ESC,  x+c → TAB,  i+o → BSPC,  ,+. → ENTER
+ * SPDX-License-Identifier: MIT
  */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
+#include "keymap_italian.h"
 
-/* ---- Layer indices ---- */
+// Layer definitions
 #define BASE 0
-#define EXT  1
-#define SYM  2
-#define NUM  3
+#define SYM 1
+#define EXT 2
+#define FNC 3
+#define SYM2 4
+#define ACCENT 5
+#define SETTINGS 6
+// -----------------
+
+&sk {
+	// don't release mods on other mods presses
+	ignore-modifiers;
+};
+
 
 / {
-  /* Optional: key repeat behavior for REP+ on EXT */
-  behaviors {
-    rep: rep {
-      compatible = "zmk,behavior-key-repeat";
-      label = "KEY_REPEAT";
-      #binding-cells = <0>;
-    };
-  }
+	behaviors {
+		// Enables holding the first mod-tap key
+		// by performing a tap-release-hold sequence.
+		// To use it: "&qt KEYCODE1 KEYCODE2"
+		qt: quick_tap {
+			compatible = "zmk,behavior-hold-tap";
+			label = "QUICK_TAP";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			quick-tap-ms = <200>;
+			bindings = <&kp>, <&kp>;
+		};
+	};
 
-  /* ========================= COMBOS (BASE) =========================
-   * Index map assumption (row-major):
-   *  row0:  0..9   -> Q W E R T  Y U I O P
-   *  row1: 10..19  -> A S D F G  H J K L '
-   *  row2: 20..29  -> Z X C V B  N M , . /
-   *  thumbs: 30..33 (L-inner, L-outer, R-outer, R-inner or similar)
-   */
-  combos {
-    compatible = "zmk,combos";
+	macros {
+		// sometimes my device thinks a modifier is being held down
+		// pressing all modifiers fixes it.
+		unstick: unstick {
+			label = "ZM_unstick";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
+		};
+	};
 
-    combo_w_e_esc {
-      timeout-ms = <50>;
-      key-positions = <1 2>;        /* w + e */
-      bindings = <&kp ESC>;
-      layers = <BASE>;
-    };
+	combos {
+		compatible = "zmk,combos";
+		// both right thumb keys
+		combo_accent {
+			timeout-ms = <200>;
+			key-positions = <32 33>;
+			bindings = <&mo ACCENT>;
+		};
+		// internal-left & external-right thumb keys
+		combo_sym2 {
+			timeout-ms = <200>;
+			key-positions = <31 33>;
+			bindings = <&mo SYM2>;
+		};
+		// both left thumb keys
+		combo_settings {
+			timeout-ms = <200>;
+			key-positions = <30 31>;
+			bindings = <&mo SETTINGS>;
+		};
+		// left index & middle fingers (home-row)
+		// hold control & space for Adobe workflow
+		combo_ctrl_space {
+			timeout-ms = <200>;
+			key-positions = <12 13>;
+			bindings = <&kp LC(SPACE)>;
+			layers = <BASE>;
+		};
+	};
 
-    combo_x_c_tab {
-      timeout-ms = <50>;
-      key-positions = <21 22>;      /* x + c */
-      bindings = <&kp TAB>;
-      layers = <BASE>;
-    };
+	keymap {
+		compatible = "zmk,keymap";
+		// Base alpha layer
+		default_layer {
+			label = "Base";
+			bindings = <
+			&kp Q &kp W &kp E &kp R &kp T           &kp Y &kp U  &kp I     &kp O   &kp P 
+			&kp A &kp S &kp D &kp F &kp G           &kp H &kp J  &kp K     &kp L &kp IT_OGRV
+			&kp Z &kp X &kp C &kp V &kp B           &kp N &kp M  &kp COMMA &kp DOT &kp IT_UGRV
+							&mo EXT &qt LSHIFT SPACE           &kp SPACE &sl SYM
+			>;
+		};
 
-    combo_i_o_bspc {
-      timeout-ms = <50>;
-      key-positions = <7 8>;        /* i + o */
-      bindings = <&kp BSPC>;
-      layers = <BASE>;
-    };
+		// Numbers and high frequency symbols
+		sym_layer {
+			label = "Sym.";
+			bindings = <
+			&kp N1 &kp N2 &kp N3 &kp N4 &kp N5		                                    &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
+			&kp IT_LESS &kp IT_USD &kp IT_LPAR &kp IT_LBRC &kp IT_LBKT  &kp IT_EQL &kp IT_QUES &kp IT_SQUOT &kp IT_MINUS &kp IT_AST
+			&kp IT_GREAT &kp IT_PERC &kp IT_RPAR &kp IT_RBRC &kp IT_RBKT 	&kp IT_AT &kp IT_EXCL &kp IT_DQUOT &kp IT_PLUS &kp IT_FSLH
+														&mo FNC  &mo SYM2       &trans &trans
+			>;
+		};
 
-    combo_comma_dot_enter {
-      timeout-ms = <50>;
-      key-positions = <27 28>;      /* , + . */
-      bindings = <&kp ENTER>;
-      layers = <BASE>;
-    };
-  };
+		// Main modifiers and arrow keys
+		ext_layer {
+			label = "Mods";
+			bindings = <
+			&kp ESC  &kp C_PREV &kp C_PP  &kp C_NEXT  &kp C_PAUSE    	&kp PG_UP  &kp HOME &kp UP &kp END &kp CAPS
+			&sk LALT &sk LGUI  &sk LSHIFT  &sk LCTRL  &kp RALT 			&kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT   &kp DEL
+			&kp LC(Z)  &kp LC(X) &kp LC(C) &kp TAB   &kp LC(V)          &kp LC(BSPC) &kp BSPC &trans &trans  &trans
+																		&trans &kp LCTRL    &kp ENTER  &mo FNC 
+			>;
+		};
 
-  keymap {
-    compatible = "zmk,keymap";
+		// Function keys with modifiers
+		fnc_layer {
+			label = "FRow";
+			bindings = <
+			&kp F1 &kp F2 &kp F3 &kp F4 &kp F5                  &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 
+			&sk LALT &sk LGUI &sk LSHIFT &sk LCTRL &kp RALT     &kp F11 &kp F12  &kp PRINTSCREEN &trans &trans
+			&none &none &none &none &none				          &none &none &none &none &none 
+							  &none &none              &none &none  
+			>;
+		};
 
-    /* ========================== BASE (QWERTY) ========================== *
-     * Thumbs (L→R):  EXT, SPACE, SHIFT, SYM
-     */
-    base_layer {
-      label = "BASE";
-      bindings = <
-      /* row0 */  &kp Q   &kp W   &kp E   &kp R   &kp T        &kp Y   &kp U    &kp I    &kp O    &kp P
-      /* row1 */  &kp A   &kp S   &kp D   &kp F   &kp G        &kp H   &kp J    &kp K    &kp L    &kp SEMI
-      /* row2 */  &kp Z   &kp X   &kp C   &kp V   &kp B        &kp N   &kp M    &kp COMMA &kp DOT &kp SLASH
-      /* thumb*/  &mo EXT            &kp SPACE                   &kp LSHFT        &mo SYM
-      >;
-    };
+		// Low frequency symbols.
+		symbols_2_layer {
+			label = "Sym.2";
+			bindings = <
+			&kp IT_CARET &kp IT_UNDER &kp IT_PND &kp IT_EUR &kp IT_HASH         &none &none &none &none &none 
+			&kp IT_BKTK &kp IT_TILDE &kp IT_BSLH &kp IT_PIPE &kp IT_AND         &none &none &none &none &none
+			&none 			&none 			 &kp IT_SECT &kp IT_CCED &kp IT_DEG				  &none &none &none &none &none
+																	&none &none        	&none &none 
+			>;
+		};
 
-    /* ===================== EXT (Extend / Nav / Edit) =================== *
-     * Left:  VOL−/VOL+, CTRL ALT CMD SHIFT, ESC/TAB/REP+
-     * Right: HOME/PGDN/PGUP/END, ←↓↑→ + BSPC, REP+/ENTER/DEL
-     * Thumb: ENTER (left), NUM (right)
-     */
-    ext_layer {
-      label = "EXT";
-      bindings = <
-      /* row0 */  &trans   &trans   &kp C_VOL_DN &kp C_VOL_UP &trans    &kp HOME  &kp PG_DN &kp PG_UP &kp END  &trans
-      /* row1 */  &kp LCTRL &kp LALT &kp LGUI    &kp LSHFT    &trans    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp BSPC
-      /* row2 */  &kp ESC  &trans   &trans       &kp TAB      &rep      &rep      &kp ENTER &trans    &trans    &kp DEL
-      /* thumb*/  &trans            &trans                     &kp ENTER          &mo NUM
-      >;
-    };
+		// Used to type regional accents.
+		accent_layer {
+			label = "Accent";
+			bindings = <
+			&none &none &none &kp IT_CEGR &none                         &none &none &none &none &none 
+			&kp IT_AGRV &kp IT_IGRV &kp IT_OGRV &kp IT_EGRV &kp IT_EACU &none &none &none &none &none
+			&none &none &none &kp IT_UGRV &none                         &none &none &none &none &none
+									&none &none                         &none &none 
+			>;
+		};
 
-    /* ============================ SYM (Symbols) ======================== *
-     * Left (vertical pairs):
-     *   ! @ # $ %    |   '  ~  {  (  [    |   <  >  }  )  ]
-     * Right:
-     *   ^ & * - ;    |   :  SHIFT CMD ALT CTRL    |   |  _  =  +  \
-     * Thumb: NUM on right
-     */
-    sym_layer {
-      label = "SYM";
-      bindings = <
-      /* row0 */  &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4) &kp LS(N5)   &kp LS(N6)  &kp LS(N7)  &kp LS(N8) &kp MINUS     &kp SEMI
-      /* row1 */  &kp SQUOT  &kp LS(GRAVE) &kp LS(LBRC) &kp LS(N9) &kp LBRC &kp LS(SEMI) &kp LSHFT  &kp LGUI   &kp LALT     &kp LCTRL
-      /* row2 */  &kp LS(COMMA) &kp LS(DOT) &kp LS(RBRC) &kp LS(N0) &kp RBRC &kp LS(BSLH) &kp LS(MINUS) &kp EQUAL &kp LS(EQUAL) &kp BSLH
-      /* thumb*/  &mo NUM                  &trans                           &trans          &trans
-      >;
-    };
-
-    /* ============================ NUM (Numpad) ========================= *
-     * Right-hand calculator:
-     *   7 8 9
-     *   4 5 6
-     *   0 1 2 3
-     * Left row1 modifiers: CTRL ALT CMD SHIFT
-     */
-    num_layer {
-      label = "NUM";
-      bindings = <
-      /* row0 */  &trans    &trans      &trans     &trans     &trans    &trans   &kp N7  &kp N8  &kp N9  &trans
-      /* row1 */  &kp LCTRL &kp LALT    &kp LGUI   &kp LSHFT  &trans    &trans   &kp N4  &kp N5  &kp N6  &trans
-      /* row2 */  &trans    &trans      &trans     &trans     &trans    &kp N0   &kp N1  &kp N2  &kp N3  &trans
-      /* thumb*/  &trans                 &trans                 &trans            &trans
-      >;
-    };
-  };
-}
-
+		// Used to change the keyboard's settings.
+		settings_layer {
+				label = "Sett.";
+				bindings = <
+				&bootloader &none &none &bt BT_CLR &bt BT_SEL 0               &bt BT_SEL 3 &none &unstick &none &bootloader 
+				&none &none &none &none      &bt BT_SEL 1 						  &bt BT_SEL 4 &none &none &none &none
+				&studio_unlock &none &none &none      &bt BT_SEL 2               &bt BT_SEL 5 &none &none &none &studio_unlock
+										&none &none                         &none &none 
+				>;
+		};
+	};
+};
