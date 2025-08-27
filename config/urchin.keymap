@@ -38,6 +38,7 @@
       compatible = "zmk,behavior-key-repeat";
       label = "KEY_REPEAT";
       #binding-cells = <0>;
+      usage-pages = <0x07>;
     };
   };
 
@@ -92,7 +93,7 @@
         label = "SYM";
         bindings = <
           /* L0 */   &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4) &kp LS(N5)   &kp LS(N6) &kp LS(N7)  &kp LS(N8) &kp MINUS   &kp SEMI
-          /* L1 */   &kp LS(SQUOT)  &kp LS(GRAVE) &kp LS(LBRC) &kp LS(N9) &kp LBRC &kp LS(SEMI) &kp LSHFT &kp LGUI   &kp LALT   &kp LCTRL
+          /* L1 */   &kp LS(SQT)  &kp LS(GRAVE) &kp LS(LBRC) &kp LS(N9) &kp LBRC &kp LS(SEMI) &kp LSHFT &kp LGUI   &kp LALT   &kp LCTRL
           /* L2 */   &kp LS(COMMA) &kp LS(DOT) &kp LS(RBRC) &kp LS(N0) &kp RBRC  &kp LS(BSLH) &kp LS(MINUS) &kp EQUAL &kp LS(EQUAL) &kp BSLH
           /* TH */   &mo NUM                     &trans                                   &trans                &trans
         >;

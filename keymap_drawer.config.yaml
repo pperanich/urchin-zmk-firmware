@@ -1,0 +1,57 @@
+draw_config:
+  # Layout and sizing
+  key_w: 60.0
+  key_h: 56.0
+  key_rx: 6.0
+  key_ry: 6.0
+  
+  # Spacing
+  inner_pad_w: 2.0
+  inner_pad_h: 2.0
+  outer_pad_w: 30.0
+  outer_pad_h: 56.0
+  split_gap: 30.0
+  
+  # Colors and styling
+  dark_mode: false
+  
+  # Text styling
+  line_spacing: 1.2
+  legend_rel_x: 0.0
+  legend_rel_y: 0.0
+  
+  # Glyph settings
+  glyph_tap_size: 14
+  glyph_hold_size: 12
+  glyph_shifted_size: 10
+  
+  # Use Material Design Icons for common symbols
+  glyphs:
+    volume_up: "$$mdi:volume-plus$$"
+    volume_down: "$$mdi:volume-minus$$"
+    volume_mute: "$$mdi:volume-mute$$"
+    brightness_up: "$$mdi:brightness-7$$"
+    brightness_down: "$$mdi:brightness-6$$"
+    bluetooth: "$$mdi:bluetooth$$"
+    usb: "$$mdi:usb$$"
+    wifi: "$$mdi:wifi$$"
+
+parse_config:
+  # ZMK-specific parsing settings
+  zmk_keycode_map:
+    # Map common ZMK keycodes to readable symbols
+    "&bootloader": "BOOT"
+    "&sys_reset": "RST"
+    "&bt BT_SEL 0": "BT0"
+    "&bt BT_SEL 1": "BT1"
+    "&bt BT_SEL 2": "BT2"
+    "&bt BT_SEL 3": "BT3"
+    "&bt BT_SEL 4": "BT4"
+    "&bt BT_SEL 5": "BT5"
+    "&bt BT_CLR": "BT_CLR"
+    "&out OUT_TOG": "OUT"
+    "&tog WIN": "WIN"
+    "&unstick": "UNSTICK"
+    
+  # Combos configuration (must be a dict)
+  zmk_combos: {}

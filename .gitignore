@@ -1,0 +1,49 @@
+# Build artifacts
+build/
+.west/
+
+# ZMK/Zephyr modules and dependencies (downloaded by west)
+modules/
+zephyr/
+zmk/
+nice-view-gem/
+urchin-zmk-module/
+keymap-drawer/
+
+# Zephyr SDK
+zephyr-sdk-*/
+
+# Legacy keymap files (keep new urchin_keymap.* files)
+sweep_keymap*
+
+# Generated keymap files (can be regenerated with ./draw.sh)
+# Keep urchin_keymap.svg for README, but ignore the rest
+urchin_keymap_*.svg
+urchin_keymap.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+
+# uv
+.uv/
+uv.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
