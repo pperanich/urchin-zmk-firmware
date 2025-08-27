@@ -57,11 +57,11 @@
     };
     
     /* Settings layer combo - both left thumb keys */
-    combo_settings {
+     combo_settings {
       timeout-ms = <50>;
       key-positions = <30 31>; // EXT + LSHIFT (both left thumb keys)
-      layers = <BASE>;
       bindings = <&mo SET>;
+      layers = <BASE>;
     };
     
     /* Programming combos from target keymap */
@@ -168,11 +168,6 @@
   /* ---- Conditional layers ---- */
   conditional_layers {
     compatible = "zmk,conditional-layers";
-    /* Settings layer: When both EXT and SYM layers are active */
-    tri_layer {
-      if-layers = <EXT SYM>;
-      then-layer = <SETTINGS>;
-    };
   };
 
   keymap {
@@ -251,16 +246,15 @@
 
       /* ============================ SET (Settings) ======================= *
       * System controls: bootloader, bluetooth profiles, outputs
-      * Left side only: All settings functionality
-      * Right side: Transparent (no functionality)  
-      * Access: Hold both left thumb keys (EXT + SHIFT)
+      * All controls on left side - accessed via both left thumb keys combo
+      * L0: BT profiles 0-4, L1: BT clear, L2: output toggle + sys reset + bootloader
       */
       set_layer {
         label = "SET";
         bindings = <
           /* L0 */   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans      &trans       &trans      &trans     &trans
-          /* L1 */   &bt BT_CLR   &out OUT_TOG &bootloader  &sys_reset   &trans         &trans      &trans       &trans      &trans     &trans
-          /* L2 */   &trans       &trans       &trans       &trans       &trans         &trans      &trans       &trans      &trans     &trans
+          /* L1 */   &bt BT_CLR   &trans       &trans       &trans       &trans         &trans      &trans       &trans      &trans     &trans
+          /* L2 */   &out OUT_TOG &sys_reset   &bootloader    &trans       &trans         &trans      &trans       &trans      &trans     &trans
           /* TH */   &trans                    &trans                                   &trans                   &trans
         >;
       };
