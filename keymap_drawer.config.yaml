@@ -4,27 +4,27 @@ draw_config:
   key_h: 56.0
   key_rx: 6.0
   key_ry: 6.0
-  
+
   # Spacing
   inner_pad_w: 2.0
   inner_pad_h: 2.0
   outer_pad_w: 30.0
   outer_pad_h: 56.0
   split_gap: 30.0
-  
+
   # Colors and styling
   dark_mode: false
-  
+
   # Text styling
   line_spacing: 1.2
   legend_rel_x: 0.0
   legend_rel_y: 0.0
-  
+
   # Glyph settings
   glyph_tap_size: 14
   glyph_hold_size: 12
   glyph_shifted_size: 10
-  
+
   # Use Material Design Icons for common symbols
   glyphs:
     volume_up: "$$mdi:volume-plus$$"
@@ -39,19 +39,89 @@ draw_config:
 parse_config:
   # ZMK-specific parsing settings
   zmk_keycode_map:
-    # Map common ZMK keycodes to readable symbols
-    "&bootloader": "BOOT"
-    "&sys_reset": "RST"
-    "&bt BT_SEL 0": "BT0"
-    "&bt BT_SEL 1": "BT1"
-    "&bt BT_SEL 2": "BT2"
-    "&bt BT_SEL 3": "BT3"
-    "&bt BT_SEL 4": "BT4"
-    "&bt BT_SEL 5": "BT5"
-    "&bt BT_CLR": "BT_CLR"
-    "&out OUT_TOG": "OUT"
-    "&tog WIN": "WIN"
-    "&unstick": "UNSTICK"
-    
+    # System controls
+    "&bootloader": "⚙️"
+    "&sys_reset": "🔄"
+    "&bt BT_SEL 0": "①"
+    "&bt BT_SEL 1": "②"
+    "&bt BT_SEL 2": "③"
+    "&bt BT_SEL 3": "④"
+    "&bt BT_SEL 4": "⑤"
+    "&bt BT_SEL 5": "⑥"
+    "&bt BT_CLR": "🧹"
+    "&out OUT_TOG": "🔄"
+
+    # Media controls
+    "&kp C_PLAY_PAUSE": "⏯️"
+    "&kp C_VOL_UP": "🔊"
+    "&kp C_VOL_DN": "🔉"
+    "&kp C_NEXT": "⏭️"
+    "&kp C_PREV": "⏮️"
+
+    # Navigation
+    "&kp UP": "↑"
+    "&kp DOWN": "↓"
+    "&kp LEFT": "←"
+    "&kp RIGHT": "→"
+    "&kp HOME": "⤴️"
+    "&kp END": "⤵️"
+    "&kp PG_UP": "⇞"
+    "&kp PG_DN": "⇟"
+
+    # Common symbols
+    "&kp BSLH": "\\"
+    "&kp PIPE": "|"
+    "&kp UNDER": "_"
+    "&kp AMPS": "&"
+    "&kp PRCNT": "%"
+    "&kp PLUS": "+"
+    "&kp MINUS": "-"
+    "&kp EQUAL": "="
+    "&kp STAR": "*"
+    "&kp SLASH": "/"
+    "&kp LT": "<"
+    "&kp GT": ">"
+    "&kp COLON": ":"
+    "&kp SEMI": ";"
+    "&kp LBRC": "{"
+    "&kp RBRC": "}"
+    "&kp LPAR": "("
+    "&kp RPAR": ")"
+    "&kp LBKT": "["
+    "&kp RBKT": "]"
+    "&kp DLLR": "$"
+    "&kp AT": "@"
+    "&kp HASH": "#"
+    "&kp CARET": "^"
+    "&kp TILDE": "~"
+    "&kp EXCL": "!"
+    "&kp QMARK": "?"
+
+    # Modifiers
+    "&sk LCTRL": "⌃"
+    "&sk LALT": "⌥"
+    "&sk LSHFT": "⇧"
+    "&sk LGUI": "⌘"
+    "&kp LCTRL": "⌃"
+    "&kp LALT": "⌥"
+    "&kp LSHFT": "⇧"
+    "&kp LGUI": "⌘"
+
+    # Special keys
+    "&kp ESC": "⎋"
+    "&kp TAB": "⇥"
+    "&kp ENTER": "⏎"
+    "&kp BSPC": "⌫"
+    "&kp DEL": "⌦"
+    "&kp SPACE": "␣"
+    "&kp CAPS": "⇪"
+
+    # Editing shortcuts
+    "&kp LC(Z)": "↶"
+    "&kp LC(X)": "✂️"
+    "&kp LC(C)": "📋"
+    "&kp LC(V)": "📄"
+    "&kp LC(BSPC)": "⌫⌫"
+
   # Combos configuration (must be a dict)
   zmk_combos: {}

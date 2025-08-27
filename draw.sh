@@ -36,13 +36,15 @@ $KEYMAP_CMD -c keymap_drawer.config.yaml draw urchin_keymap.yaml --select-layers
 $KEYMAP_CMD -c keymap_drawer.config.yaml draw urchin_keymap.yaml --select-layers EXT > urchin_keymap_ext.svg
 $KEYMAP_CMD -c keymap_drawer.config.yaml draw urchin_keymap.yaml --select-layers SYM > urchin_keymap_sym.svg
 $KEYMAP_CMD -c keymap_drawer.config.yaml draw urchin_keymap.yaml --select-layers NUM > urchin_keymap_num.svg
+$KEYMAP_CMD -c keymap_drawer.config.yaml draw urchin_keymap.yaml --select-layers SET > urchin_keymap_set.svg
 
 echo "✅ Keymap drawing complete!"
 echo ""
 echo "📁 Generated files:"
-echo "   All layers:    urchin_keymap.svg"
-echo "   Base layer:    urchin_keymap_base.svg"
-echo "   Extend layer:  urchin_keymap_ext.svg"
-echo "   Symbol layer:  urchin_keymap_sym.svg"
-echo "   Number layer:  urchin_keymap_num.svg"
-echo "   Parsed config: urchin_keymap.yaml"
+echo "   All layers:     urchin_keymap.svg"
+echo "   Base layer:     urchin_keymap_base.svg"
+echo "   Extend layer:   urchin_keymap_ext.svg"
+echo "   Symbol layer:   urchin_keymap_sym.svg"
+echo "   Number layer:   urchin_keymap_num.svg"
+echo "   Settings layer: urchin_keymap_set.svg"
+echo "   Parsed config:  urchin_keymap.yaml"
