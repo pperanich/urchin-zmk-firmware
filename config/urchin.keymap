@@ -64,7 +64,7 @@
 
       /* ===================== EXT (Extend / Nav / Edit) =================== *
       * Left half: Vol−/Vol+, Ctrl/Alt/Cmd/Shift, Esc/Tab/REP*
-      * Right half: Home/PgDn/PgUp/End, ←↓↑→ + Bsp, REP*/Enter/Del
+      * Right half: Home/PgDn/PgUp/End, ←↓↑→ + Bsp, REP* /Enter/Del
       * Bottom right has ENT and NUM keys (per SVG)
       */
       ext_layer {
