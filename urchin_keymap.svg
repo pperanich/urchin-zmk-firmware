@@ -716,7 +716,7 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g class="combo combopos-0">
 <rect rx="6" ry="6" x="154" y="135" width="28" height="26" class="combo"/>
-<text x="168" y="148" class="combo tap">&amp;arrow</text>
+<use href="#phosphor:regular/arrow-right" xlink:href="#phosphor:regular/arrow-right" x="161" y="141" height="14" width="14.0" class="combo tap glyph phosphor:regular/arrow-right"/>
 </g>
 <g class="combo combopos-1">
 <rect rx="6" ry="6" x="154" y="79" width="28" height="26" class="combo"/>

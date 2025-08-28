@@ -38,6 +38,7 @@ parse_config:
     "&gte": "$$phosphor:regular/greater-than-or-equal$$"
     "&lte": "$$phosphor:regular/less-than-or-equal$$"
     "&neq": "$$phosphor:regular/not-equals$$"
+    "&arrow": "$$phosphor:regular/arrow-right$$"
 
     # Bluetooth profiles with circled numbers
     "&bt BT_SEL 0": "$$phosphor:regular/number-circle-one$$"
