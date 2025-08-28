@@ -13,7 +13,7 @@ draw_config:
   split_gap: 30.0
 
   # Colors and styling
-  dark_mode: false
+  dark_mode: "auto"
 
   # Text styling
   line_spacing: 1.2
@@ -28,33 +28,39 @@ draw_config:
 parse_config:
   # ZMK-specific parsing settings
   raw_binding_map:
-    # Media controls at raw binding level - using phosphor icons
-    "&kp C_VOL_UP": "$$phosphor:regular/speaker-high$$"
-    "&kp C_VOL_DN": "$$phosphor:regular/speaker-low$$"
-    "&kp C_PLAY_PAUSE": "$$phosphor:regular/play-pause$$"
-    "&kp C_NEXT": "$$phosphor:regular/skip-forward$$"
-    "&kp C_PREV": "$$phosphor:regular/skip-back$$"
-    
-    # Copy/paste at raw binding level - using phosphor icons
-    "&kp LC(Z)": "$$phosphor:regular/arrow-counter-clockwise$$"
-    "&kp LC(X)": "$$phosphor:regular/scissors$$"
-    "&kp LC(C)": "$$phosphor:regular/copy$$"
-    "&kp LC(V)": "$$phosphor:regular/clipboard$$"
-    "&kp LC(BSPC)": "$$phosphor:regular/backspace$$"
-
-  zmk_keycode_map:
     # System controls - using phosphor icons
     "&bootloader": "$$phosphor:regular/gear$$"
     "&sys_reset": "$$phosphor:regular/arrow-clockwise$$"
-    "BT CLR": "$$phosphor:regular/trash$$"
-    "OUT TOG": "$$phosphor:regular/arrows-clockwise$$"
+    "&bt BT_CLR": "$$phosphor:regular/trash$$"
+    "&out OUT_TOG": "$$phosphor:regular/arrows-clockwise$$"
+    "&rep": "$$phosphor:regular/repeat$$"
+    "&kp K_APP": "$$phosphor:regular/list-dashes$$"
+    "&gte": "$$phosphor:regular/greater-than-or-equal$$"
+    "&lte": "$$phosphor:regular/less-than-or-equal$$"
+    "&neq": "$$phosphor:regular/not-equals$$"
+
+    # Bluetooth profiles with circled numbers
+    "&bt BT_SEL 0": "$$phosphor:regular/number-circle-one$$"
+    "&bt BT_SEL 1": "$$phosphor:regular/number-circle-two$$"
+    "&bt BT_SEL 2": "$$phosphor:regular/number-circle-three$$"
+    "&bt BT_SEL 3": "$$phosphor:regular/number-circle-four$$"
+    "&bt BT_SEL 4": "$$phosphor:regular/number-circle-five$$"
+
+  zmk_keycode_map:
+    # Bluetooth profiles with circled numbers
+    "BT_SEL_0": "①"
+    "BT_SEL 1": "②"
+    "BT_SEL 2": "③"
+    "BT_SEL 3": "④"
+    "BT_SEL 4": "⑤"
+    "BT_CLR": "$$phosphor:regular/trash$$"
 
     # Media controls - using phosphor icons
-    "VOL UP": "$$phosphor:regular/speaker-high$$"
-    "VOL DN": "$$phosphor:regular/speaker-low$$"
-    "PLAY PAUSE": "$$phosphor:regular/play-pause$$"
-    "NEXT": "$$phosphor:regular/skip-forward$$"
-    "PREV": "$$phosphor:regular/skip-back$$"
+    "C_VOL_UP": "$$phosphor:regular/speaker-high$$"
+    "C_VOL_DN": "$$phosphor:regular/speaker-low$$"
+    "C_PLAY_PAUSE": "$$phosphor:regular/play-pause$$"
+    "C_NEXT": "$$phosphor:regular/skip-forward$$"
+    "C_PREV": "$$phosphor:regular/skip-back$$"
 
     # Navigation - using phosphor icons
     "UP": "$$phosphor:regular/arrow-up$$"
@@ -63,8 +69,8 @@ parse_config:
     "RIGHT": "$$phosphor:regular/arrow-right$$"
     "HOME": "$$phosphor:regular/house$$"
     "END": "$$phosphor:regular/arrow-line-right$$"
-    "PG UP": "$$phosphor:regular/arrow-up-left$$"
-    "PG DN": "$$phosphor:regular/arrow-down-right$$"
+    "PG_UP": "$$phosphor:regular/arrow-square-up$$"
+    "PG_DN": "$$phosphor:regular/arrow-square-down$$"
 
     # Common symbols
     "BSLH": "\\"
@@ -94,26 +100,33 @@ parse_config:
     "TILDE": "~"
     "EXCL": "!"
     "QMARK": "?"
+    "COMMA": ","
+    "DOT": "."
+    "SQT": "'"
+    "DQT": '"'
+    "BANG": "!"
+    "GRAVE": "`"
 
     # Special keys - using reliable phosphor icons and Unicode fallbacks
-    "ESC": "$$phosphor:regular/x-circle$$"
-    "TAB": "$$phosphor:regular/arrow-right$$"
-    "ENTER": "⏎"
-    "BSPC": "$$phosphor:regular/arrow-left$$"
+    "ESC": "ESC"
+    "TAB": "TAB"
+    "ENTER": "$$phosphor:regular/key-return$$"
+    "BSPC": "$$phosphor:regular/backspace$$"
     "DEL": "$$phosphor:regular/x$$"
     "SPACE": "␣"
-    "CAPS": "⇪"
+    "CAPS": "$$phosphor:regular/arrow-fat-line-up$$"
     "LSHFT": "$$phosphor:regular/arrow-up$$"
-    "LGUI": "⌘"
-    "LALT": "⌥"
-    "LCTRL": "⌃"
+    "LGUI": "$$phosphor:regular/command$$"
+    "LALT": "$$phosphor:regular/option$$"
+    "LCTRL": "$$phosphor:regular/control$$"
+    "LSHFT": "$$phosphor:regular/arrow-fat-up$$"
 
-    # Copy/paste shortcuts - using phosphor icons  
-    "Ctl+Z": "$$phosphor:regular/arrow-counter-clockwise$$"
-    "Ctl+X": "$$phosphor:regular/scissors$$"
-    "Ctl+C": "$$phosphor:regular/copy$$"
-    "Ctl+V": "$$phosphor:regular/clipboard$$"
-    "Ctl+BSPC": "$$phosphor:regular/backspace$$"
+    # Copy/paste shortcuts - using phosphor icons
+    "LC(Z)": "$$phosphor:regular/arrow-counter-clockwise$$"
+    "LC(X)": "$$phosphor:regular/scissors$$"
+    "LC(C)": "$$phosphor:regular/copy$$"
+    "LC(V)": "$$phosphor:regular/clipboard$$"
+    "LC(BSPC)": "Ctl + $$phosphor:duotone/backspace$$"
 
     # Function keys
     "F1": "F1"
@@ -131,13 +144,22 @@ parse_config:
 
     # Additional keys - using phosphor icons
     "PSCRN": "$$phosphor:regular/camera$$"
-    "APP": "$$phosphor:regular/list$$"
-    "&rep": "$$phosphor:regular/repeat$$"
+
+    # Bluetooth profiles with circled numbers (alternative mappings)
+    "BT_SEL 0": "①"
+    "BT_SEL 1": "②"
+    "BT_SEL 2": "③"
+    "BT_SEL 3": "④"
+    "BT_SEL 4": "⑤"
+
+    # Shift combinations that might appear
+    "LS(N2)": "@"
+    "Sft+2": "@"
 
     # Programming combos - using symbols (phosphor doesn't have these operators)
     "&arrow": "=>"
     "&lte": "≤"
-    "&gte": "≥" 
+    "&gte": "≥"
     "&neq": "≠"
     "&amp;arrow": "=>"
     "&amp;lte": "≤"
@@ -152,4 +174,3 @@ parse_config:
 
   # Combos configuration
   zmk_combos: {}
-

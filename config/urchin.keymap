@@ -220,9 +220,9 @@
       sym_layer {
         label = "SYM";
         bindings = <
-          /* L0 */   &kp BSLH   &kp PIPE    &kp UNDER   &kp AMPS    &kp PRCNT       &kp PLUS    &kp MINUS   &kp EQUAL   &kp STAR    &kp SLASH
+          /* L0 */   &kp GRAVE  &kp PIPE    &kp UNDER   &kp AMPS    &kp PRCNT       &kp PLUS    &kp MINUS   &kp EQUAL   &kp STAR    &kp TILDE
           /* L1 */   &kp LT     &kp COLON   &kp LBRC    &kp LPAR    &kp LBKT        &kp DLLR    &sk LCTRL   &sk LSHFT   &sk LALT    &sk LGUI
-          /* L2 */   &kp GT     &kp SEMI    &kp RBRC    &kp RPAR    &kp RBKT        &kp LS(N2)  &kp AT      &kp HASH    &kp CARET   &kp TILDE
+          /* L2 */   &kp GT     &kp SEMI    &kp RBRC    &kp RPAR    &kp RBKT        &kp BANG    &kp AT      &kp HASH    &kp CARET   &kp BSLH
           /* TH */   &mo NUM                      &trans                                  &trans                  &trans
         >;
       };
