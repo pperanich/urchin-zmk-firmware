@@ -26,7 +26,7 @@
   /* ---- Combos ---- */
   combos {
     compatible = "zmk,combos";
-    
+
     /* Base layer combos */
     combo_esc {
       timeout-ms = <50>;
@@ -34,36 +34,36 @@
       bindings = <&kp ESC>;
       layers = <BASE>;
     };
-    
+
     combo_tab {
       timeout-ms = <50>;
       key-positions = <21 22>; // X + C
       bindings = <&kp TAB>;
       layers = <BASE>;
     };
-    
+
     combo_bspc {
       timeout-ms = <50>;
       key-positions = <7 8>; // I + O
       bindings = <&kp BSPC>;
       layers = <BASE>;
     };
-    
+
     combo_enter {
       timeout-ms = <50>;
       key-positions = <27 28>; // , + '
       bindings = <&kp ENTER>;
       layers = <BASE>;
     };
-    
+
     /* Settings layer combo - both left thumb keys */
-     combo_settings {
+    combo_settings {
       timeout-ms = <50>;
       key-positions = <30 31>; // EXT + LSHIFT (both left thumb keys)
       bindings = <&mo SET>;
       layers = <BASE>;
     };
-    
+
     /* Programming combos from target keymap */
     combo_arrow {
       timeout-ms = <50>;
@@ -71,21 +71,21 @@
       bindings = <&arrow>;
       layers = <SYM>;
     };
-    
+
     combo_lte {
-      timeout-ms = <50>;  
+      timeout-ms = <50>;
       key-positions = <12 13>; // _ + &  -> <=
       bindings = <&lte>;
       layers = <SYM>;
     };
-    
+
     combo_gte {
       timeout-ms = <50>;
       key-positions = <16 17>; // - + =  -> >=
       bindings = <&gte>;
       layers = <SYM>;
     };
-    
+
     combo_neq {
       timeout-ms = <50>;
       key-positions = <11 12>; // | + _  -> !=
@@ -142,21 +142,21 @@
       #binding-cells = <0>;
       bindings = <&kp EQUAL &kp GT>;
     };
-    
+
     lte: lte {
       label = "LESS_THAN_EQUAL";
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp LT &kp EQUAL>;
     };
-    
+
     gte: gte {
       label = "GREATER_THAN_EQUAL";
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&kp GT &kp EQUAL>;
     };
-    
+
     neq: neq {
       label = "NOT_EQUAL";
       compatible = "zmk,behavior-macro";
@@ -174,89 +174,89 @@
     compatible = "zmk,keymap";
 
     /* ========================== BASE (QWERTY) ========================== *
-    * Yellow-tagged hold-taps from the SVG:
-    *   - W: hold ESC / tap w
-    *   - X: hold TAB / tap x
-    *   - I: hold BSPC / tap i
-    *   - ,: hold ENTER / tap ,
-      * Thumbs in the SVG (left→right):  EXT, SPACE, SHIFT, SYM
-      */
-      base_layer {
-        label = "BASE";
-        bindings = <
-          /* L0 */   &kp Q      &kp W       &kp E       &kp R        &kp T            &kp Y       &kp U        &kp I       &kp O      &kp P
-          /* L1 */   &kp A      &kp S       &kp D       &kp F        &kp G            &kp H       &kp J        &kp K       &kp L      &kp SEMI
-          /* L2 */   &kp Z      &kp X       &kp C       &kp V        &kp B            &kp N       &kp M        &comma_morph &quote_morph &kp SLASH
-          /* TH */   &mo EXT                 &kp LSHFT                                &kp SPACE               &mo SYM
-        >;
-      };
+     * Yellow-tagged hold-taps from the SVG:
+     *   - W: hold ESC / tap w
+     *   - X: hold TAB / tap x
+     *   - I: hold BSPC / tap i
+     *   - ,: hold ENTER / tap ,
+     * Thumbs in the SVG (left→right):  EXT, SPACE, SHIFT, SYM
+     */
+    base_layer {
+      label = "BASE";
+      bindings = <
+        /* L0 */   &kp Q      &kp W        &kp E        &kp R        &kp T            &kp Y       &kp U        &kp I        &kp O        &kp P
+        /* L1 */   &kp A      &kp S        &kp D        &kp F        &kp G            &kp H       &kp J        &kp K        &kp L        &kp SEMI
+        /* L2 */   &kp Z      &kp X        &kp C        &kp V        &kp B            &kp N       &kp M        &comma_morph &quote_morph &kp SLASH
+        /* TH */   &mo EXT                 &kp LSHFT                                  &kp SPACE                &mo SYM
+      >;
+    };
 
-      /* ===================== EXT (Extend / Nav / Edit) =================== *
-      * Left half: Vol−/Vol+, Ctrl/Alt/Cmd/Shift, Esc/Tab/REP*
-      * Right half: Home/PgDn/PgUp/End, ←↓↑→ + Bsp, REP* /Enter/Del
-      * Bottom right has ENT and NUM keys (per SVG)
-      */
-      ext_layer {
-        label = "EXT";
-        bindings = <
-          /* L0 */   &kp C_VOL_DN &kp C_PREV &kp C_PLAY_PAUSE &kp C_NEXT &kp C_VOL_UP    &kp HOME    &kp PG_DN    &kp PG_UP   &kp END    &kp CAPS
-          /* L1 */   &sk LGUI     &sk LALT   &sk LSHFT       &sk LCTRL  &kp TAB         &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT  &kp ESC
-          /* L2 */   &kp LC(Z)    &kp LC(X)  &kp LC(C)       &kp LC(V)  &rep            &kp LC(BSPC) &kp BSPC   &kp DEL     &kp PSCRN  &kp K_APP
-          /* TH */   &trans                   &trans                                  &kp ENTER               &mo NUM
-        >;
-      };
+    /* ===================== EXT (Extend / Nav / Edit) =================== *
+     * Left half: Vol−/Vol+, Ctrl/Alt/Cmd/Shift, Esc/Tab/REP*
+     * Right half: Home/PgDn/PgUp/End, ←↓↑→ + Bsp, REP* /Enter/Del
+     * Bottom right has ENT and NUM keys (per SVG)
+     */
+    ext_layer {
+      label = "EXT";
+      bindings = <
+        /* L0 */   &kp C_VOL_DN &kp C_PREV   &kp C_PLAY_PAUSE &kp C_NEXT   &kp C_VOL_UP     &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &kp CAPS
+        /* L1 */   &sk LGUI     &sk LALT     &sk LSHFT        &sk LCTRL    &kp TAB          &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp ESC
+        /* L2 */   &kp LC(Z)    &kp LC(X)    &kp LC(C)        &kp LC(V)    &rep             &kp LC(BSPC) &kp BSPC     &kp DEL      &kp PSCRN    &kp K_APP
+        /* TH */   &trans                    &trans                                         &kp ENTER                 &mo NUM
+      >;
+    };
 
-      /* ============================ SYM (Symbols) ======================== *
-      * Left half (vertical pairs):
-      *   Row0: ! @ # $ %
-      *   Row1: ' ~ { ( [
-      *   Row2: < > } ) ]
-      * Right half:
-      *   Row0: ^ & * - ;
-      *   Row1: :  SHIFT  CMD  ALT  CTRL
-      *   Row2: |  _      =    +    \
-      * Bottom has a NUM key (left of right thumb cluster in the SVG)
-      */
-      sym_layer {
-        label = "SYM";
-        bindings = <
-          /* L0 */   &kp GRAVE  &kp PIPE    &kp UNDER   &kp AMPS    &kp PRCNT       &kp PLUS    &kp MINUS   &kp EQUAL   &kp STAR    &kp TILDE
-          /* L1 */   &kp LT     &kp COLON   &kp LBRC    &kp LPAR    &kp LBKT        &kp DLLR    &sk LCTRL   &sk LSHFT   &sk LALT    &sk LGUI
-          /* L2 */   &kp GT     &kp SEMI    &kp RBRC    &kp RPAR    &kp RBKT        &kp BANG    &kp AT      &kp HASH    &kp CARET   &kp BSLH
-          /* TH */   &mo NUM                      &trans                                  &trans                  &trans
-        >;
-      };
+    /* ============================ SYM (Symbols) ======================== *
+     * Left half (vertical pairs):
+     *   Row0: ! @ # $ %
+     *   Row1: ' ~ { ( [
+     *   Row2: < > } ) ]
+     * Right half:
+     *   Row0: ^ & * - ;
+     *   Row1: :  SHIFT  CMD  ALT  CTRL
+     *   Row2: |  _      =    +    \
+     * Bottom has a NUM key (left of right thumb cluster in the SVG)
+     */
+    sym_layer {
+      label = "SYM";
+      bindings = <
+        /* L0 */   &kp GRAVE  &kp PIPE     &kp UNDER    &kp AMPS     &kp PRCNT        &kp PLUS     &kp MINUS    &kp EQUAL    &kp STAR     &kp TILDE
+        /* L1 */   &kp LT     &kp COLON    &kp LBRC     &kp LPAR     &kp LBKT         &kp DLLR     &sk LCTRL    &sk LSHFT    &sk LALT     &sk LGUI
+        /* L2 */   &kp GT     &kp SEMI     &kp RBRC     &kp RPAR     &kp RBKT         &kp BANG     &kp AT       &kp HASH     &kp CARET    &kp BSLH
+        /* TH */   &mo NUM                 &trans                                     &trans                    &trans
+      >;
+    };
 
-      /* ============================ NUM (Numpad) ========================= *
-      * Right hand calculator layout:
-      *   7 8 9
-      *   4 5 6
-      *   0 1 2 3
-      * Left hand second row has: ALT, CMD, SHIFT (per SVG)
-      */
-      num_layer {
-        label = "NUM";
-        bindings = <
-          /* L0 */   &kp N1     &kp N2     &kp N3     &kp N4     &kp N5        &kp N6   &kp N7    &kp N8    &kp N9    &kp N0
-          /* L1 */   &sk LGUI   &sk LALT   &sk LSHFT  &sk LCTRL  &kp F11       &kp F12  &sk LCTRL &sk LSHFT &sk LALT  &sk LGUI
-          /* L2 */   &kp F1     &kp F2     &kp F3     &kp F4     &kp F5        &kp F6   &kp F7    &kp F8    &kp F9    &kp F10
-          /* TH */   &trans                 &trans                               &trans              &trans
-        >;
-      };
+    /* ============================ NUM (Numpad) ========================= *
+     * Right hand calculator layout:
+     *   7 8 9
+     *   4 5 6
+     *   0 1 2 3
+     * Left hand second row has: ALT, CMD, SHIFT (per SVG)
+     */
+    num_layer {
+      label = "NUM";
+      bindings = <
+        /* L0 */   &kp N1     &kp N2       &kp N3       &kp N4       &kp N5           &kp N6      &kp N7       &kp N8       &kp N9       &kp N0
+        /* L1 */   &sk LGUI   &sk LALT     &sk LSHFT    &sk LCTRL    &kp F11          &kp F12     &sk LCTRL    &sk LSHFT    &sk LALT     &sk LGUI
+        /* L2 */   &kp F1     &kp F2       &kp F3       &kp F4       &kp F5           &kp F6      &kp F7       &kp F8       &kp F9       &kp F10
+        /* TH */   &trans                  &trans                                     &trans                   &trans
+      >;
+    };
 
-      /* ============================ SET (Settings) ======================= *
-      * System controls: bootloader, bluetooth profiles, outputs
-      * All controls on left side - accessed via both left thumb keys combo
-      * L0: BT profiles 0-4, L1: BT clear, L2: output toggle + sys reset + bootloader
-      */
-      set_layer {
-        label = "SET";
-        bindings = <
-          /* L0 */   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans      &trans       &trans      &trans     &trans
-          /* L1 */   &bt BT_CLR   &trans       &trans       &trans       &trans         &trans      &trans       &trans      &trans     &trans
-          /* L2 */   &out OUT_TOG &sys_reset   &bootloader    &trans       &trans         &trans      &trans       &trans      &trans     &trans
-          /* TH */   &trans                    &trans                                   &trans                   &trans
-        >;
-      };
+    /* ============================ SET (Settings) ======================= *
+     * System controls: bootloader, bluetooth profiles, outputs
+     * All controls on left side - accessed via both left thumb keys combo
+     * L0: BT profiles 0-4, L1: BT clear, L2: output toggle + sys reset + bootloader
+     */
+    set_layer {
+      label = "SET";
+      bindings = <
+        /* L0 */   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &trans      &trans       &trans      &trans       &trans
+        /* L1 */   &bt BT_CLR   &trans       &trans       &trans       &trans           &trans      &trans       &trans      &trans       &trans
+        /* L2 */   &out OUT_TOG &sys_reset   &bootloader  &trans       &trans           &trans      &trans       &trans      &trans       &trans
+        /* TH */   &trans                    &trans                                     &trans                   &trans
+      >;
+    };
   };
 };
