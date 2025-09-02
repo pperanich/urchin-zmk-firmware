@@ -27,34 +27,34 @@
   combos {
     compatible = "zmk,combos";
 
-    /* Base layer combos */
-    combo_esc {
-      timeout-ms = <50>;
-      key-positions = <1 2>; // W + E
-      bindings = <&kp ESC>;
-      layers = <BASE>;
-    };
-
-    combo_tab {
-      timeout-ms = <50>;
-      key-positions = <21 22>; // X + C
-      bindings = <&kp TAB>;
-      layers = <BASE>;
-    };
-
-    combo_bspc {
-      timeout-ms = <50>;
-      key-positions = <7 8>; // I + O
-      bindings = <&kp BSPC>;
-      layers = <BASE>;
-    };
-
-    combo_enter {
-      timeout-ms = <50>;
-      key-positions = <27 28>; // , + '
-      bindings = <&kp ENTER>;
-      layers = <BASE>;
-    };
+    /* /* Base layer combos */
+    /* combo_esc { */
+    /*   timeout-ms = <50>; */
+    /*   key-positions = <1 2>; // W + E */
+    /*   bindings = <&kp ESC>; */
+    /*   layers = <BASE>; */
+    /* }; */
+    /**/
+    /* combo_tab { */
+    /*   timeout-ms = <50>; */
+    /*   key-positions = <21 22>; // X + C */
+    /*   bindings = <&kp TAB>; */
+    /*   layers = <BASE>; */
+    /* }; */
+    /**/
+    /* combo_bspc { */
+    /*   timeout-ms = <50>; */
+    /*   key-positions = <7 8>; // I + O */
+    /*   bindings = <&kp BSPC>; */
+    /*   layers = <BASE>; */
+    /* }; */
+    /**/
+    /* combo_enter { */
+    /*   timeout-ms = <50>; */
+    /*   key-positions = <27 28>; // , + ' */
+    /*   bindings = <&kp ENTER>; */
+    /*   layers = <BASE>; */
+    /* }; */
 
     /* Settings layer combo - both left thumb keys */
     combo_settings {
@@ -173,14 +173,7 @@
   keymap {
     compatible = "zmk,keymap";
 
-    /* ========================== BASE (QWERTY) ========================== *
-     * Yellow-tagged hold-taps from the SVG:
-     *   - W: hold ESC / tap w
-     *   - X: hold TAB / tap x
-     *   - I: hold BSPC / tap i
-     *   - ,: hold ENTER / tap ,
-     * Thumbs in the SVG (left→right):  EXT, SPACE, SHIFT, SYM
-     */
+    /* ========================== BASE (QWERTY) ========================== */
     base_layer {
       label = "BASE";
       bindings = <
@@ -191,11 +184,7 @@
       >;
     };
 
-    /* ===================== EXT (Extend / Nav / Edit) =================== *
-     * Left half: Vol−/Vol+, Ctrl/Alt/Cmd/Shift, Esc/Tab/REP*
-     * Right half: Home/PgDn/PgUp/End, ←↓↑→ + Bsp, REP* /Enter/Del
-     * Bottom right has ENT and NUM keys (per SVG)
-     */
+    /* ===================== EXT (Extend / Nav / Edit) =================== */
     ext_layer {
       label = "EXT";
       bindings = <
@@ -206,17 +195,7 @@
       >;
     };
 
-    /* ============================ SYM (Symbols) ======================== *
-     * Left half (vertical pairs):
-     *   Row0: ! @ # $ %
-     *   Row1: ' ~ { ( [
-     *   Row2: < > } ) ]
-     * Right half:
-     *   Row0: ^ & * - ;
-     *   Row1: :  SHIFT  CMD  ALT  CTRL
-     *   Row2: |  _      =    +    \
-     * Bottom has a NUM key (left of right thumb cluster in the SVG)
-     */
+    /* ============================ SYM (Symbols) ======================== */
     sym_layer {
       label = "SYM";
       bindings = <
@@ -227,13 +206,7 @@
       >;
     };
 
-    /* ============================ NUM (Numpad) ========================= *
-     * Right hand calculator layout:
-     *   7 8 9
-     *   4 5 6
-     *   0 1 2 3
-     * Left hand second row has: ALT, CMD, SHIFT (per SVG)
-     */
+    /* ============================ NUM (Numpad) ========================= */
     num_layer {
       label = "NUM";
       bindings = <
@@ -244,11 +217,7 @@
       >;
     };
 
-    /* ============================ SET (Settings) ======================= *
-     * System controls: bootloader, bluetooth profiles, outputs
-     * All controls on left side - accessed via both left thumb keys combo
-     * L0: BT profiles 0-4, L1: BT clear, L2: output toggle + sys reset + bootloader
-     */
+    /* ============================ SET (Settings) ======================= */
     set_layer {
       label = "SET";
       bindings = <
