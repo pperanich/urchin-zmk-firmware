@@ -2,7 +2,7 @@
  * 34-Key Split (3x5 + 2 thumbs/side) — ZMK keymap inspired by Caliply layout
  * Layers: BASE, EXT (extend/nav/edit), SYM (symbols), NUM (numbers/functions), SETTINGS
  *
- * BASE:     QWERTY with combos (W+E=Esc, X+C=Tab, I+O=Bsp, ,+'=Enter), mod-morphs (, -> ', . -> ")
+ * BASE:     QWERTY with home row mods (GASC layout), mod-morphs (, -> ', . -> ")
  * EXT:      Media controls, one-shot modifiers, nav arrows, editing shortcuts (Ctrl+Z/X/C/V)
  * SYM:      Programming symbols with one-shot mods, combos for =>, <=, >=, !=
  * NUM:      Number row (1-0), function keys (F1-F12), one-shot modifiers on both sides
@@ -107,6 +107,18 @@
       bindings = <&kp>, <&kp>;
     };
 
+    /* Home row mods - GASC layout (GUI, Alt, Shift, Ctrl) */
+    hm: homerow_mods {
+      compatible = "zmk,behavior-hold-tap";
+      label = "HOMEROW_MODS";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <150>;
+      quick-tap-ms = <125>;
+      require-prior-idle-ms = <125>;
+      bindings = <&kp>, <&kp>;
+    };
+
     /* Repeat last keypress (ZMK behavior); if unavailable, replace uses with &kp AGAIN */
     rep: rep {
       compatible = "zmk,behavior-key-repeat";
@@ -177,10 +189,10 @@
     base_layer {
       label = "BASE";
       bindings = <
-        /* L0 */   &kp Q      &kp W        &kp E        &kp R        &kp T            &kp Y       &kp U        &kp I        &kp O        &kp P
-        /* L1 */   &kp A      &kp S        &kp D        &kp F        &kp G            &kp H       &kp J        &kp K        &kp L        &kp SEMI
-         /* L2 */   &kp Z      &kp X        &kp C        &kp V        &kp B            &kp N       &kp M        &comma_morph &period_morph &kp SLASH
-        /* TH */   &mo EXT                 &kp LSHFT                                  &kp SPACE                &mo SYM
+        /* L0 */   &kp Q          &kp W          &kp E          &kp R          &kp T            &kp Y       &kp U          &kp I          &kp O          &kp P
+        /* L1 */   &hm LGUI A     &hm LALT S     &hm LSHFT D    &hm LCTRL F    &kp G            &kp H       &hm RCTRL J    &hm RSHFT K    &hm RALT L     &hm RGUI SEMI
+         /* L2 */   &kp Z          &kp X          &kp C          &kp V          &kp B            &kp N       &kp M          &comma_morph   &period_morph  &kp SLASH
+        /* TH */   &mo EXT                       &kp LSHFT                                      &kp SPACE                  &mo SYM
       >;
     };
 

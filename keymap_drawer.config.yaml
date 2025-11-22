@@ -116,11 +116,14 @@ parse_config:
     "DEL": "$$phosphor:regular/x$$"
     "SPACE": "␣"
     "CAPS": "$$phosphor:regular/arrow-fat-line-up$$"
-    "LSHFT": "$$phosphor:regular/arrow-up$$"
     "LGUI": "$$phosphor:regular/command$$"
     "LALT": "$$phosphor:regular/option$$"
     "LCTRL": "$$phosphor:regular/control$$"
     "LSHFT": "$$phosphor:regular/arrow-fat-up$$"
+    "RGUI": "$$phosphor:regular/command$$"
+    "RALT": "$$phosphor:regular/option$$"
+    "RCTRL": "$$phosphor:regular/control$$"
+    "RSHFT": "$$phosphor:regular/arrow-fat-up$$"
 
     # Copy/paste shortcuts - using phosphor icons
     "LC(Z)": "$$phosphor:regular/arrow-counter-clockwise$$"
