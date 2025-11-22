@@ -12,6 +12,9 @@ manifest:
       # nice-view-gem
     - name: m165437
       url-base: https://github.com/M165437
+      # urob's zmk modules
+    - name: urob
+      url-base: https://github.com/urob
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -23,5 +26,30 @@ manifest:
     - name: nice-view-gem
       remote: m165437
       revision: main
+    # urob's ZMK modules for timeless HRMs and other features
+    - name: zmk-helpers
+      remote: urob
+      revision: v0.3
+      path: modules/zmk/helpers
+    - name: zmk-tri-state
+      remote: urob
+      revision: v0.3
+      path: modules/zmk/tri-state
+    - name: zmk-auto-layer
+      remote: urob
+      revision: v0.3
+      path: modules/zmk/auto-layer
+    - name: zmk-leader-key
+      remote: urob
+      revision: v0.3
+      path: modules/zmk/leader-key
+    - name: zmk-adaptive-key
+      remote: urob
+      revision: v0.3
+      path: modules/zmk/adaptive-key
+    - name: zmk-unicode
+      remote: urob
+      revision: v0.3
+      path: modules/zmk/unicode
   self:
     path: config

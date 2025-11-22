@@ -48,4 +48,3 @@ echo "   Symbol layer:   urchin_keymap_sym.svg"
 echo "   Number layer:   urchin_keymap_num.svg"
 echo "   Settings layer: urchin_keymap_set.svg"
 echo "   Parsed config:  urchin_keymap.yaml"
-

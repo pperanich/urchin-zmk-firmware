@@ -12,6 +12,15 @@ keymap-drawer/
 
 # Zephyr SDK
 zephyr-sdk-*/
+zephyr-sdk-*.tar.xz
+
+# Old ZMK module locations (should be in modules/zmk/ now)
+zmk-helpers/
+zmk-tri-state/
+zmk-auto-layer/
+zmk-leader-key/
+zmk-adaptive-key/
+zmk-unicode/
 
 # Legacy keymap files (keep new urchin_keymap.* files)
 sweep_keymap*

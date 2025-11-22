@@ -40,6 +40,39 @@ parse_config:
     "&neq": "$$phosphor:regular/not-equals$$"
     "&arrow": "$$phosphor:regular/arrow-right$$"
 
+    # Advanced behaviors from urob's config
+    "&leader": "LDR"
+    "&caps_word": "⇪"
+    "&shift_repeat": "↻"
+    "&shift_rep": "↻"
+    "&key_repeat": "↻"
+    "&num_dance": "NUM"
+    "&magic_shift": "$$phosphor:regular/arrow-fat-up$$"
+    "&smart_num": "NUM"
+    "&num_word": "NUM"
+
+    # Unicode character macros (accents)
+    "&uc_eacute": "é"
+    "&uc_egrave": "è"
+    "&uc_ecirc": "ê"
+    "&uc_aacute": "á"
+    "&uc_agrave": "à"
+    "&uc_ntilde": "ñ"
+    "&uc_ccedil": "ç"
+
+    # Unicode character macros (Greek)
+    "&uc_alpha": "α"
+    "&uc_beta": "β"
+    "&uc_gamma": "γ"
+    "&uc_delta": "δ"
+    "&uc_epsilon": "ε"
+    "&uc_theta": "θ"
+    "&uc_lambda": "λ"
+    "&uc_mu": "μ"
+    "&uc_pi": "π"
+    "&uc_sigma": "σ"
+    "&uc_omega": "ω"
+
     # Bluetooth profiles with circled numbers
     "&bt BT_SEL 0": "$$phosphor:regular/number-circle-one$$"
     "&bt BT_SEL 1": "$$phosphor:regular/number-circle-two$$"
@@ -130,6 +163,7 @@ parse_config:
     "LC(X)": "$$phosphor:regular/scissors$$"
     "LC(C)": "$$phosphor:regular/copy$$"
     "LC(V)": "$$phosphor:regular/clipboard$$"
+    "LC(Y)": "$$phosphor:regular/arrow-clockwise$$"
     "LC(BSPC)": "Ctl + $$phosphor:duotone/backspace$$"
 
     # Function keys

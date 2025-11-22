@@ -52,10 +52,64 @@ else
     echo "📦 Using Python packages from pyproject.toml via uv"
 fi
 
-# Set Zephyr SDK environment variable
-if [ -d "zephyr-sdk-0.16.8" ]; then
-    export ZEPHYR_SDK_INSTALL_DIR="$PWD/zephyr-sdk-0.16.8"
+# Download and set up Zephyr SDK if not present
+SDK_VERSION="0.16.8"
+SDK_DIR="zephyr-sdk-${SDK_VERSION}"
+
+if [ ! -d "$SDK_DIR" ]; then
+    echo "📦 Zephyr SDK not found, downloading..."
+
+    # Detect platform
+    OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+    ARCH=$(uname -m)
+
+    case "${OS}-${ARCH}" in
+        linux-x86_64)
+            SDK_FILE="zephyr-sdk-${SDK_VERSION}_linux-x86_64.tar.xz"
+            ;;
+        linux-aarch64)
+            SDK_FILE="zephyr-sdk-${SDK_VERSION}_linux-aarch64.tar.xz"
+            ;;
+        darwin-x86_64)
+            SDK_FILE="zephyr-sdk-${SDK_VERSION}_macos-x86_64.tar.xz"
+            ;;
+        darwin-arm64)
+            SDK_FILE="zephyr-sdk-${SDK_VERSION}_macos-aarch64.tar.xz"
+            ;;
+        *)
+            echo "❌ Unsupported platform: ${OS}-${ARCH}"
+            echo "   Please manually download the Zephyr SDK from:"
+            echo "   https://github.com/zephyrproject-rtos/sdk-ng/releases/tag/v${SDK_VERSION}"
+            exit 1
+            ;;
+    esac
+
+    SDK_URL="https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${SDK_VERSION}/${SDK_FILE}"
+
+    echo "   Downloading ${SDK_FILE}..."
+    if ! wget -q --show-progress "${SDK_URL}"; then
+        echo "❌ Failed to download Zephyr SDK"
+        exit 1
+    fi
+
+    echo "📦 Extracting SDK..."
+    tar xf "${SDK_FILE}"
+
+    echo "🔧 Running SDK setup..."
+    cd "${SDK_DIR}"
+    ./setup.sh -h -c
+    cd ..
+
+    echo "🧹 Cleaning up archive..."
+    rm "${SDK_FILE}"
+
+    echo "✅ Zephyr SDK ${SDK_VERSION} installed successfully"
+else
+    echo "✅ Zephyr SDK found at ${SDK_DIR}"
 fi
+
+# Set Zephyr SDK environment variable
+export ZEPHYR_SDK_INSTALL_DIR="$PWD/${SDK_DIR}"
 
 # Source Zephyr environment
 if [ -f zephyr/zephyr-env.sh ]; then
