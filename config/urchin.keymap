@@ -14,7 +14,7 @@
  *           accents (ea/eg/ec/aa/ag/nt/cc for é/è/ê/á/à/ñ/ç),
  *           Greek (ga/gb/gg/gd/ge/gt/gl/gm/gp/gs/go for α/β/γ/δ/ε/θ/λ/μ/π/σ/ω)
  * EXT:      Media controls, one-shot modifiers, nav arrows, editing shortcuts
- *           (Ctrl+Z/X/C/V/Y for Undo/Cut/Copy/Paste/Redo)
+ *           (Cmd+Z/X/C/V/Y for Undo/Cut/Copy/Paste/Redo — use one-shot Ctrl for Windows)
  *           Smart-num on right thumb: tap=numword, double-tap=sticky, hold=momentary NUM
  * SYM:      Programming symbols with one-shot mods, combos for =>, <=, >=, !=
  *           Smart-num on left thumb: tap=numword, double-tap=sticky, hold=momentary NUM
@@ -485,7 +485,7 @@
       bindings = <
         /* L0 */   &kp C_VOL_DN &kp C_PREV   &kp C_PLAY_PAUSE &kp C_NEXT   &kp C_VOL_UP     &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &kp CAPS
         /* L1 */   &sk LGUI     &sk LALT     &sk LSHFT        &sk LCTRL    &kp TAB          &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp ESC
-        /* L2 */   &kp LC(Z)    &kp LC(X)    &kp LC(C)        &kp LC(V)    &kp LC(Y)        &kp LC(BSPC) &kp BSPC     &kp DEL      &kp PSCRN    &kp K_APP
+        /* L2 */   &kp LG(Z)    &kp LG(X)    &kp LG(C)        &kp LG(V)    &kp LG(Y)        &kp LG(BSPC) &kp BSPC     &kp DEL      &kp PSCRN    &kp K_APP
         /* TH */   &trans                    &trans                                         &kp ENTER                 &smart_num NUM 0
       >;
     };
