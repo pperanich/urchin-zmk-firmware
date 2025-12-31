@@ -165,6 +165,13 @@ parse_config:
     "LC(V)": "$$phosphor:regular/clipboard$$"
     "LC(Y)": "$$phosphor:regular/arrow-clockwise$$"
     "LC(BSPC)": "Ctl + $$phosphor:duotone/backspace$$"
+    # Duplicate for MacOS shortcuts.
+    "LG(Z)": "$$phosphor:regular/arrow-counter-clockwise$$"
+    "LG(X)": "$$phosphor:regular/scissors$$"
+    "LG(C)": "$$phosphor:regular/copy$$"
+    "LG(V)": "$$phosphor:regular/clipboard$$"
+    "LG(Y)": "$$phosphor:regular/arrow-clockwise$$"
+    "LG(BSPC)": "Ctl + $$phosphor:duotone/backspace$$"
 
     # Function keys
     "F1": "F1"
